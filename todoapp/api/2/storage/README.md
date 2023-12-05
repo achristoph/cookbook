@@ -1,0 +1,5 @@
+- In second iteration, we introduce logging feature
+- The logging keeps track the history of the todo operations
+- The logging default writer is to standard output, making the unit test still possible without having to mock the IO at this point
+- The functions are now converted to methods and the TodoList is now the main container of the todos along with other fields
+- There are two constructors with and without options. Currently, there is only one option for logging

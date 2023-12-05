@@ -1,0 +1,5 @@
+- In third iteration, we introduce persistent storage
+- We create a wrapper for storage so that the type of storage can changed without modifying todo list code itself and allows unit test to mock operations as necessary - in this case, in-memory storage would do just fine for unit testing
+- todo_store.go contains the interface for storage , we also add context argument that is required beyond a simple in-memory storage, the error is getting more complex as there could be more issues when connecting to database
+- the folder structure is adjusted to accomodate the tests for 2 different data storage
+- added testify library for simplifying assertion
