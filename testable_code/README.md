@@ -1,6 +1,7 @@
 Testable Codes in Golang
-Writing tests are not easy, writing comprehensive tests even harder, covering the critical paths then continue with non-critical onwards would provide coverage sufficient for a pretty robust code.
-If code is easy to test then it is easy to understand, if it is hard to understand then it is hard to test, and vice versa
+- Writing tests are not easy, writing comprehensive tests even harder, covering the critical paths then continue with non-critical ones would provide enough coverage for a reasonably robust code
+- If code is easy to test then it is easy to understand, if it is hard to understand then it is hard to test, and vice versa
+- Code coverage that covers the lines of code provides the minimum indicator that the lines have been run on test codes but does not tell if minimum or all conditions have been tested, hence 100% coverage is not equal to 100% tested, in fact, it is possible that 80% code coverage with more tests can actually covers more test cases than 100% coverage
 
 The following are the guidelines/findings to reach the goal:
 1. When defining a function instead of a method, be sure that it does need to be a function since a function nested inside another method or function cannot be stubbed
@@ -16,4 +17,5 @@ The following are the guidelines/findings to reach the goal:
 7.  OS/Db operations, external service calls need to be wrapped as well so that they can stubbed too
 8. Checking error is very important in go as there is no error propagation, error raised can easily go silent
 9. The nested method needs to be called explicity called with its interface so that the stubbed method can be used
-10. 
+10. In order to stub, the actual method needs to call its method using explicit interface, e.g: w.Worker.Run()
+11. For naming test method, it can be named by the method being tested followed by any nested method then followed by description of what state causes the method being run. This usually is one of the if conditions, followed by response status if any, e.g: Test_Run_CheckStatus_CategoryA_Success() . If you can find the line / logic being tested easily by reading the test method name then it is named well enough
