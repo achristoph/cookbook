@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// When defining a function instead of a method, be sure that it does need to be a function since a function nested inside another method or function cannot be stubbed
+// When defining a function instead of a method, be sure that it does need to be a function since a function that is nested inside another method or function cannot be stubbed
 func Log(message string) {
 	fmt.Println("Logging into file: " + message)
 }

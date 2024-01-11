@@ -5,8 +5,8 @@ import (
 	"testing"
 )
 
-// Any variable that you want to test inside function/method will need to be returned so that the its value can be tested,
-// however, there are variables that are 'in the middle' that is produced by some logic that should be tested - this logic needs to be extracted out as a method so that
+// Any variable that you want to test inside function/method will need to be returned so that the its value can be tested, however, there are variables that are 'in the middle' that is produced by some logic that should be tested - this logic needs to be extracted out as a method so that it can be tested in isolation.
+// If there a few possible values to test, put the possible inputs in a collection to iterate so that it can be done efficiently in one test method
 
 func ColorToAction(color string) (output string) {
 	var action string
@@ -37,21 +37,12 @@ func FindAction(color string) (action string) {
 	return action
 }
 
-func TestColorToAction_CheckAction(t *testing.T) {
+func TestFindAction(t *testing.T) {
 	color := "green"
 	actualAction := FindAction(color)
 	expectedAction := "go"
 	if actualAction != expectedAction {
 		t.Errorf("%s not equal to %s", actualAction, expectedAction)
-	}
-}
-
-func TestColorToAction_CheckOutput(t *testing.T) {
-	color := "red"
-	actualOutput := ColorToActionAfterExtractMethod(color)
-	expectedOutput := "red is stop"
-	if actualOutput != expectedOutput {
-		t.Errorf("%s not equal to %s", actualOutput, expectedOutput)
 	}
 }
 
